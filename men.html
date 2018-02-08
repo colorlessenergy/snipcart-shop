@@ -1,0 +1,18 @@
+---
+layout: default
+---
+
+{% for category in site.categories %}
+     {% capture category_name %}{{ category | first }}{% endcapture %}
+     <h1>{{ category_name }}</h1>
+     {% for post in site.categories[category_name] %}
+        {% if post.main == 'true' %}
+        <img src="{{ post.pic-url }}" alt="">
+
+        <p>${{ post.price }}</p>
+        <h4>
+            <a href="{{ site.baseurl }}{{ post.url }}">{{post.type}}</a>
+        </h4>
+        {% endif %}
+    {% endfor %}
+{% endfor %}

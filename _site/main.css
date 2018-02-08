@@ -1,0 +1,23 @@
+button {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+#but {
+    display: block;
+}
+
+#big-img {
+    width: 300px;
+}
+
+img {
+    width: 100px;
+}
+
+img:hover {
+    border: 1px solid brown;
+}

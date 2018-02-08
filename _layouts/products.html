@@ -1,0 +1,52 @@
+---
+layout: default
+---
+
+
+<div>
+    {% for post in site.posts %}
+     {% if page.url contains post.type %}
+        <img src="{{site.baseurl}}/{{ post.pic-url }}" alt="{{ post.name }}"> 
+        {% endif %}
+    {% endfor %}
+</div>
+
+{% for post in site.posts %}
+     {% if post.main == 'true' %}
+        {% if page.url contains post.type %}
+            <img id="big-img" src="{{site.baseurl}}/{{ post.pic-url }}" alt="">
+            <p>${{ post.price }}</p>
+            <h2>{{ post.type }}</h2>
+        {% endif %}
+    {% endif %}
+{% endfor %}
+
+
+<p>Quantity</p>
+<input type="number" id="my-quantity" value="1">
+
+<p>size</p>
+
+<select id="my-size">
+    <option>Small</option>
+    <option>Medium</option>
+    <option>Large</option>
+</select>
+
+
+{{ content }}
+
+<!-- loops through the post and checks if the type is the same as the url -->
+
+{% for post in site.posts %}
+{% if page.url contains post.type %}
+<button id="{% if post.main == 'true' %}my-button{% endif %}" data-item-custom2-name="{{ post.custom-name }}"
+    data-item-custom2-options="{{ post.custom-options }}" class="snipcart-add-item {% if post.main == 'true' %}active{% endif %}"
+    data-item-id="{{ post.id }}" data-item-url="{{ post.url }}" data-item-name="{{ post.name }}" data-item-price="{{ post.price }}"
+    data-item-image="{{site.baseurl}}/{{ post.pic-url }}" data-item-quantity="1">
+    Buy now
+</button>
+{% endif %}
+
+{% endfor %}
+
